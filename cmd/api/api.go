@@ -5,13 +5,15 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/VBao/gopher_social/internal/env/repository"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
 
 // Use to inject all the required service, config for the application
 type application struct {
-	config config
+	config     config
+	repository repository.Repository
 }
 
 type config struct {

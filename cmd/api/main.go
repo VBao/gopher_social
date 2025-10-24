@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/VBao/gopher_social/internal/env"
+	"github.com/VBao/gopher_social/internal/env/repository"
 )
 
 func main() {
@@ -11,8 +12,11 @@ func main() {
 		addr: env.GetString("ADDR", ":8888"),
 	}
 
+	repository := repository.NewRepository(nil)
+
 	app := &application{
-		config: config,
+		config:     config,
+		repository: repository,
 	}
 
 	mux := app.mount()
